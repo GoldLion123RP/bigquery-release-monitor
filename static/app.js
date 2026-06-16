@@ -190,6 +190,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Setup refresh button event
     refreshBtn.addEventListener('click', fetchFeed);
 
+    // About Modal functionality
+    const aboutBtn = document.getElementById('about-btn');
+    const aboutModal = document.getElementById('about-modal');
+    const closeAboutBtn = document.getElementById('close-about-btn');
+
+    aboutBtn.addEventListener('click', () => {
+        aboutModal.classList.remove('hidden');
+    });
+
+    closeAboutBtn.addEventListener('click', () => {
+        aboutModal.classList.add('hidden');
+    });
+
+    // Close modal if user clicks outside of modal-card
+    aboutModal.addEventListener('click', (e) => {
+        if (e.target === aboutModal) {
+            aboutModal.classList.add('hidden');
+        }
+    });
+
     // Fetch initial notes on load
     fetchFeed();
 });

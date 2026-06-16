@@ -32,11 +32,35 @@
                     <span class="btn-text">Refresh Feed</span>
                     <span class="spinner" id="refresh-spinner"></span>
                 </button>
+                <button id="about-btn" class="btn btn-secondary">
+                    About App
+                </button>
             </div>
             <div class="footer-note">
                 <p>Select any note to view details and draft a tweet.</p>
             </div>
         </header>
+
+        <!-- About Modal Overlay -->
+        <div id="about-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h2>About BQ Release Monitor</h2>
+                    <button id="close-about-btn" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        This application is designed to help Cloud Engineers and Data Analysts stay updated with the latest changes in Google BigQuery. It fetches official release updates directly from Google and lets you share selected updates on Twitter with a single click.
+                    </p>
+                    <h3>Tech Stack</h3>
+                    <ul>
+                        <li><strong>Backend:</strong> Python Flask (serving parsed XML feed data via REST API)</li>
+                        <li><strong>Frontend:</strong> Vanilla HTML5, CSS3, & Modern ES6 JavaScript</li>
+                        <li><strong>Styling:</strong> CSS Variables, Glassmorphism, Dark UI, Responsive grid layouts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
         <!-- Main Content Area -->
         <main class="app-main">
