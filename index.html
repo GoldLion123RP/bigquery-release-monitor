@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BigQuery Release Notes Reader & Tweet Generator</title>
+    <meta name="description" content="Track Google Cloud BigQuery release notes and updates instantly. Read official release details and easily share updates on Twitter.">
+    <meta name="keywords" content="BigQuery, Google Cloud, Release Notes, BigQuery Updates, RSS Feed Reader, Tweet Updates">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="static/images/favicon.jpg">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Header -->
+        <header class="app-header">
+            <div class="logo-area">
+                <div class="logo-icon">BQ</div>
+                <div class="logo-text">
+                    <h1>BigQuery</h1>
+                    <p>Release Monitor</p>
+                </div>
+            </div>
+            <p class="feed-description">
+                Keep up to date with the latest features, enhancements, and deprecations in Google BigQuery.
+            </p>
+            <div class="actions">
+                <button id="refresh-btn" class="btn btn-primary">
+                    <span class="btn-text">Refresh Feed</span>
+                    <span class="spinner" id="refresh-spinner"></span>
+                </button>
+                <button id="about-btn" class="btn btn-secondary">
+                    About App
+                </button>
+            </div>
+            <div class="footer-note">
+                <p>Select any note to view details and draft a tweet.</p>
+            </div>
+        </header>
+
+        <!-- About Modal Overlay -->
+        <div id="about-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h2>About BQ Release Monitor</h2>
+                    <button id="close-about-btn" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        This application is designed to help Cloud Engineers and Data Analysts stay updated with the latest changes in Google BigQuery. It fetches official release updates directly from Google and lets you share selected updates on Twitter with a single click.
+                    </p>
+                    <h3>Tech Stack</h3>
+                    <ul>
+                        <li><strong>Backend:</strong> Python Flask (serving parsed XML feed data via REST API)</li>
+                        <li><strong>Frontend:</strong> Vanilla HTML5, CSS3, & Modern ES6 JavaScript</li>
+                        <li><strong>Styling:</strong> CSS Variables, Glassmorphism, Dark UI, Responsive grid layouts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <main class="app-main">
+            <!-- Feed Feed List -->
+            <section class="notes-feed">
+                <div class="section-header">
+                    <h2>Recent Updates</h2>
+                    <span class="badge" id="notes-count">0 items</span>
+                </div>
+                <div class="feed-list" id="feed-list">
+                    <!-- Dynamic Notes will go here -->
+                    <div class="empty-state">
+                        <p>No notes loaded. Click Refresh Feed to fetch the latest updates.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Details & Share View -->
+            <section class="note-viewer">
+                <div id="viewer-empty" class="viewer-empty">
+                    <div class="empty-icon">📢</div>
+                    <h3>No Update Selected</h3>
+                    <p>Select a release note from the list on the left to read full details and share it on Twitter.</p>
+                </div>
+                <div id="viewer-content" class="viewer-content hidden">
+                    <article class="note-article">
+                        <div class="note-meta">
+                            <span class="note-date" id="view-date">Date</span>
+                        </div>
+                        <h2 class="note-title" id="view-title">Title of the selected release note</h2>
+                        <hr class="divider">
+                        <div class="note-body" id="view-body">
+                            <!-- HTML content goes here -->
+                        </div>
+                    </article>
+                    <div class="share-card">
+                        <h3>Share this Update</h3>
+                        <p>Draft a Tweet with a summary of this release note:</p>
+                        <textarea id="tweet-box" class="tweet-box" rows="4"></textarea>
+                        <div class="tweet-footer">
+                            <span class="char-count" id="char-count">0 / 280</span>
+                            <button id="tweet-btn" class="btn btn-tweet">
+                                <svg class="twitter-icon" viewBox="0 0 24 24" width="20" height="20">
+                                    <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                </svg>
+                                Tweet This
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="static/app.js"></script>
+</body>
+</html>

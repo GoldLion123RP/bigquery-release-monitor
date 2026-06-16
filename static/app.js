@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
         refreshBtn.disabled = true;
         
         try {
-            const response = await fetch('/api/notes');
+            // Fetch the compiled static json payload
+            const response = await fetch('./static/api/notes.json');
             const data = await response.json();
             
             if (data.success) {
