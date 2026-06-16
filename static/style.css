@@ -346,6 +346,35 @@ body {
     color: var(--text-secondary);
 }
 
+.about-details {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-link {
+    color: var(--primary) !important;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.about-link:hover {
+    text-decoration: underline;
+}
+
+.tag {
+    background: rgba(59, 130, 246, 0.1) !important;
+    color: var(--primary) !important;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-family: var(--font-body) !important;
+    margin-right: 0.25rem;
+    display: inline-block;
+}
+
 .modal-body p {
     margin-bottom: 1rem;
 }
